@@ -5,6 +5,10 @@ export class EventService {
   getEvents() {
     return EVENTS;
   }
+
+  getEvent(id: number) : any {
+    return EVENTS.find(event => id == event.id);
+  }
 }
 
 const EVENTS = [
@@ -139,7 +143,7 @@ const EVENTS = [
           of the United States through his amazing programming skills, 
           showing how you too can be success with just attitude.`,
         voters: ['bradgreen']
-      },
+      }
     ]
   },
   {
@@ -221,7 +225,7 @@ const EVENTS = [
           to use directives in your Angular 4 development while drawing lessons from the new movie,
           featuring all your favorite characters like Han Solo's ghost and Darth Jar Jar.`,
         voters: ['bradgreen', 'martinfowler']
-      },
+      }
     ]
   },
   {
@@ -270,7 +274,7 @@ const EVENTS = [
           the latest Destiny DLC, but we can still improve the massages they give and the handmade
           brie they make using Angular 4. This session will show you how.`,
         voters: ['igorminar', 'johnpapa']
-      },
+      }
     ]
   },
   {
