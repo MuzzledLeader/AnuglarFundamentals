@@ -13,6 +13,7 @@ import { NavBarComponent } from './nav/navbar.components';
 import { ToastrService } from './common/toastr.service';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from '../routes';
+import { AuthService } from "./user/auth.service"
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { appRoutes } from '../routes';
   ],
   providers: [
     EventService,
-    ToastrService
+    ToastrService,
+    AuthService
   ],
   bootstrap: [EventsAppComponent]
 })
