@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
-import { ISession } from "../shared/event.model";
+import { ISession, restrictedWords } from "../shared/index";
 
 @Component({
   templateUrl: './create-session.component.html',
@@ -31,7 +31,8 @@ export class CreateSessionComponent implements OnInit {
     this.abstract = new FormControl('',
       [
         Validators.required,
-        Validators.maxLength(400)
+        Validators.maxLength(400),
+        restrictedWords(['foo', 'bar']) // Requires our function to return a function (since we're passing parameters otherwise we wouldn't need this just input parameter of FormControl)
       ]);
 
     this.newSessionForm = new FormGroup({
