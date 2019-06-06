@@ -8,7 +8,8 @@ import {
   EventService,
   EventsListComponent,
   CreateSessionComponent,
-  SessionListComponent
+  SessionListComponent,
+  DurationPipe
 } from "./events/index"
 import {
   ToastrService,
@@ -37,7 +38,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
       CreateEventComponent,
       CreateSessionComponent,
       SessionListComponent,
-      CollapsibleWellComponent
+      CollapsibleWellComponent,
+      DurationPipe
   ],
   providers: [
     EventService,
