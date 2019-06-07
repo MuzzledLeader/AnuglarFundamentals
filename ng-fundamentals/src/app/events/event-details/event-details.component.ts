@@ -18,6 +18,7 @@ export class EventDetailsComponent {
   event: any;
 
   filterBy: string = 'all';
+  sortBy: string = 'votes';
 
   constructor(
     private eventService:EventService,
