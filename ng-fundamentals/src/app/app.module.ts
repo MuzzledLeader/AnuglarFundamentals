@@ -12,15 +12,17 @@ import {
   DurationPipe
 } from "./events/index"
 import {
-  ToastrService,
   CollapsibleWellComponent
 } from './common/index';
 import { EventsAppComponent } from './events-app.component';
 import { NavBarComponent } from './nav/navbar.components';
 import { RouterModule } from '@angular/router';
+import { TOASTER_TOKEN, IToaster } from './common/toastr.service';
 import { appRoutes } from '../routes';
 import { AuthService } from "./user/auth.service"
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+declare let toastr: IToaster;
 
 @NgModule({
   imports: [
@@ -30,20 +32,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RouterModule.forRoot(appRoutes)
   ],
   declarations: [
-      EventsAppComponent,
-      EventsListComponent,
-      EventThumbnailComponent,
-      NavBarComponent,
-      EventDetailsComponent,
-      CreateEventComponent,
-      CreateSessionComponent,
-      SessionListComponent,
-      CollapsibleWellComponent,
-      DurationPipe
+    EventsAppComponent,
+    EventsListComponent,
+    EventThumbnailComponent,
+    NavBarComponent,
+    EventDetailsComponent,
+    CreateEventComponent,
+    CreateSessionComponent,
+    SessionListComponent,
+    CollapsibleWellComponent,
+    DurationPipe
   ],
   providers: [
     EventService,
-    ToastrService,
+    { provide: TOASTER_TOKEN, useValue: toastr },
     AuthService
   ],
   bootstrap: [EventsAppComponent]
