@@ -9,7 +9,9 @@ import {
   EventsListComponent,
   CreateSessionComponent,
   SessionListComponent,
-  DurationPipe
+  DurationPipe,
+  UpvoteComponent,
+  VoterService
 } from "./events/index"
 import { EventsAppComponent } from './events-app.component';
 import { NavBarComponent } from './nav/navbar.components';
@@ -48,13 +50,15 @@ let jQuery = window['$'];
     CollapsibleWellComponent,
     DurationPipe,
     SimpleModalComponent,
-    ModalTriggerDirective
+    ModalTriggerDirective,
+    UpvoteComponent,
   ],
   providers: [
     EventService,
     { provide: TOASTER_TOKEN, useValue: toastr },
     { provide: JQ_TOKEN, useValue: jQuery },
-    AuthService
+    AuthService,
+    VoterService
   ],
   bootstrap: [EventsAppComponent]
 })
