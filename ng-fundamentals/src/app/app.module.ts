@@ -11,18 +11,23 @@ import {
   SessionListComponent,
   DurationPipe
 } from "./events/index"
-import {
-  CollapsibleWellComponent
-} from './common/index';
 import { EventsAppComponent } from './events-app.component';
 import { NavBarComponent } from './nav/navbar.components';
 import { RouterModule } from '@angular/router';
-import { TOASTER_TOKEN, IToaster } from './common/toastr.service';
+import {
+  TOASTER_TOKEN,
+  IToaster,
+  JQ_TOKEN,
+  CollapsibleWellComponent,
+  SimpleModalComponent,
+  ModalTriggerDirective
+} from './common/index';
 import { appRoutes } from '../routes';
 import { AuthService } from "./user/auth.service"
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-declare let toastr: IToaster;
+let toastr:IToaster = window['toastr'];
+let jQuery = window['$'];
 
 @NgModule({
   imports: [
@@ -41,11 +46,14 @@ declare let toastr: IToaster;
     CreateSessionComponent,
     SessionListComponent,
     CollapsibleWellComponent,
-    DurationPipe
+    DurationPipe,
+    SimpleModalComponent,
+    ModalTriggerDirective
   ],
   providers: [
     EventService,
     { provide: TOASTER_TOKEN, useValue: toastr },
+    { provide: JQ_TOKEN, useValue: jQuery },
     AuthService
   ],
   bootstrap: [EventsAppComponent]

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { EventService } from '../shared/event.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { ISession } from '../index'
 
 @Component({
@@ -26,7 +26,14 @@ export class EventDetailsComponent {
   }
 
   ngOnInit() {
-    this.event = this.eventService.getEvent(this.route.snapshot.params['id']);
+    // This now will subscribe to route parameters to dynamically change route
+    // on the same page as oppose to using the initial snapshot.
+    this.route.params.forEach((params: Params) => {
+      this.event = this.eventService.getEvent(+params['id']);
+
+      // Reset state
+      this.addMode = false;
+    });
   }
 
   addSession() {
