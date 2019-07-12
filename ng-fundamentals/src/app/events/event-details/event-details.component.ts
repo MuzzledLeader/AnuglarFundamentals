@@ -49,9 +49,12 @@ export class EventDetailsComponent {
   }
 
   saveNewSession(session: ISession) {
-    const nextId = Math.max.apply(0, this.event.sessions.map(s => s.id));
-
+    const nextId = Math.max.apply(0, this.event.sessions == null ? [0] : this.event.sessions.map(s => s.id));
+    
     session.id = nextId + 1;
+    if (this.event.sessions == null) {
+      this.event.sessions = [];
+    }
     this.event.sessions.push(session);
     this.eventService.saveEvent(this.event).subscribe();
     this.addMode = false;

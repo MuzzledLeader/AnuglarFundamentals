@@ -27,7 +27,7 @@ export class SessionListComponent implements OnChanges {
         this.visibleSessions.sort((s1, s2) => s1.name < s2.name ? -1 : (s1.name > s2.name ? 1 : 0));
       }
       else {
-        this.visibleSessions.sort((s1, s2) => s2.voters.length - s1.voters.length);
+        this.visibleSessions.sort((s1, s2) => (s2.voters == null ? 0 : s2.voters.length) - (s1.voters == null ? 0 : s1.voters.length));
       };
     }
   }

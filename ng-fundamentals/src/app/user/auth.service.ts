@@ -44,8 +44,11 @@ export class AuthService {
   checkAuthenticationStatus() {
     this.http.get('/api/currentIdentity').subscribe(data => {
       if (data instanceof Object) {
-        // Because my classes didn't match I had to copy over the data.
-        this.currentUser = new User(data);
+        //// Because my classes didn't match I had to copy over the data.
+        //this.currentUser = new User(data);
+
+        // Now they do match
+        this.currentUser = <IUser>data;
       }
     });
   }
@@ -54,7 +57,7 @@ export class AuthService {
     this.currentUser.firstname = firstname;
     this.currentUser.lastname = lastname;
 
-    return this.http.put(`/api/users/${this.currentUser.id}`, (<User>this.currentUser).toJSON(), this.defaultHttpOptions);
+    return this.http.put(`/api/users/${this.currentUser.id}`, JSON.stringify(<User>this.currentUser), this.defaultHttpOptions);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
