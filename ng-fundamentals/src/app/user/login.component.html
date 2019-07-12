@@ -1,5 +1,8 @@
 <h1>Login</h1>
 <hr>
+<p>
+  Hint, hint! The username is johnpapa
+</p>
 <div class="col-md-4">
   <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)" autocomplete="off">
     <div class="form-group">
@@ -14,4 +17,7 @@
     <button type="submit" class="btn btn-primary">Login</button>
     <button type="button" (click)="cancel()" class="btn btn-default">Cancel</button>
   </form>
+  <div *ngIf="loginInvalid" class="alert alert-danger">
+    Login invalid!
+  </div>
 </div>

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http'
 
 import {
   EventThumbnailComponent,
@@ -11,7 +12,8 @@ import {
   SessionListComponent,
   DurationPipe,
   UpvoteComponent,
-  VoterService
+  VoterService,
+  EventResolver
 } from "./events/index"
 import { EventsAppComponent } from './events-app.component';
 import { NavBarComponent } from './nav/navbar.components';
@@ -36,7 +38,8 @@ let jQuery = window['$'];
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   declarations: [
     EventsAppComponent,
@@ -55,6 +58,7 @@ let jQuery = window['$'];
   ],
   providers: [
     EventService,
+    EventResolver,
     { provide: TOASTER_TOKEN, useValue: toastr },
     { provide: JQ_TOKEN, useValue: jQuery },
     AuthService,

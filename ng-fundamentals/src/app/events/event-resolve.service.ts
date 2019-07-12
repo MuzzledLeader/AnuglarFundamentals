@@ -4,12 +4,13 @@ import { EventService } from "./shared/event.service";
 import { map } from "rxjs/operators"
 
 @Injectable()
-export class EventListResolver implements Resolve<any> {
+export class EventResolver implements Resolve<any> {
+
   constructor(private eventService: EventService) {
   }
 
-  resolve() {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     // Resolvers subscribe so don't worry about doing this.
-    return this.eventService.getEvents();
+    return this.eventService.getEvent(route.params['id']);
   }
 }
